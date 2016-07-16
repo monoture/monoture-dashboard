@@ -1,0 +1,42 @@
+<ng-include src="'app/partials/navbar.html'"></ng-include>
+
+<main class="flex-sm flex-sm-1">
+
+  <div class="flex-sm-1 flex-sm flex-sm-column">
+    <div class="flex-sm-1 flex-sm">
+      <div class="list-group list-group-flush list-group-inverse flex-sm-1 overflow-y scrollbar-inverse">
+
+        <a href class="list-group-item" ng-repeat="post in posts" ng-click="fetchPost(post._id)">
+          {{post.title}}
+        </a>
+
+      </div>
+      <div class="flex-sm-4 flex-sm flex-sm-column">
+        <nav class="navbar navbar-light navbar-full bg-faded">
+          <div class="pull-xs-left">
+            <a href="#/post/new" class="btn btn-primary btn-sm">
+              <i class="fa fa-plus"></i> New Post
+            </a>
+          </div>
+          <div class="pull-xs-right">
+            <div id="controls" class="btn-group btn-group-sm">
+              <a href ng-click="editPost()" data-control="edit" class="btn btn-secondary">
+                <i class="fa fa-pencil"></i> Edit
+              </a>
+              <a href ng-click="publishPost()" data-control="publish" class="btn btn-secondary">
+                <i class="fa fa-globe"></i> Publish
+              </a>
+              <a href ng-href="/post/{{post.slug}}" target="_blank" data-control="view" class="btn btn-secondary">
+                <i class="fa fa-eye"></i> View
+              </a>
+              <a href ng-click="deletePost()" data-control="delete" class="btn btn-danger">
+                <i class="fa fa-trash"></i> Delete
+              </a>
+            </div>
+          </div>
+        </nav>
+        <div id="preview" class="flex-sm-1 p-a-1 overflow-y scrollbar-teal bg-white" ng-bind-html="preview"></div>
+      </div>
+    </div>
+  </div>
+</main>
