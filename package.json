@@ -1,17 +1,15 @@
 {
   "name": "monoture-dashboard",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Monoture Dashboard",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^1.6.0"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "James Pegg <jamescpegg@gmail.com> (http://jamespegg.co.uk)",
+  "license": "MIT"
 }
