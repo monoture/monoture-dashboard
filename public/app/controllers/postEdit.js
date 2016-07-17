@@ -1,15 +1,23 @@
-monoture.controller('PostEditController', function($scope, $rootScope, $http, $sce, $location, $routeParams, authProvider){
-  var user = authProvider.isLoggedIn();
-  $scope.user = user;
-  //$scope.post = {};
+monoture.controller('PostEditController', function($scope, $rootScope, $sce, $location, $routeParams, postService){
+
+  $scope.publishedOptions = [
+    {label : "Yes", value : true},
+    {label : "No",  value : false}
+  ];
 
   $scope.fetchPost = function(id) {
-    $http({
-      url : '/api/v1/posts/' + id,
-      method : 'GET',
-      params : {access_token : user.token}
-    }).then(function(data){
-      $scope.post = data.data.data;
+    postService.getPost(id).then(function(response){
+      $scope.post = response.data.data;
+    }).catch(function(err){
+      $location.path('/');
+    });
+  }
+
+  $scope.save = function() {
+    postService.savePost($scope.post).then(function(response){
+      $location.path('/');
+    }).catch(function(err){
+      $scope.errors = err;
     });
   }
 

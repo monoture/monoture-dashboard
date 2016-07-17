@@ -1,40 +1,69 @@
-<ng-include src="'app/partials/navbar.html'"></ng-include>
+<form method="post" ng-submit="save()" class="flex-xs-1 flex-xs flex-xs-column flex-sm-row">
 
-<form method="post" action="/dashboard/post" class="flex-sm-1 flex-sm">
-  <div class="flex-sm-1 bg-inverse overflow-y scrollbar-inverse">
-    <div class="p-a-1">
+  <!-- Sidebar -->
+  <aside class="list-group list-group-flush list-group-inverse flex-sm-2 flex-lg-1 overflow-y scrollbar-inverse">
+
+    <div class="list-group-item brand">
+      Monoture Dashboard
+    </div>
+
+    <div class="list-group-item">
       <h4>Properties</h4>
+
+      <!-- Published -->
       <div class="form-group">
         <label>Published</label>
-        <select name="published" class="form-control form-control-inverse">
-          <option value="true" selected="selected">Yes</option>
-          <option value="false">No</option>
-        </select>
+        <select name="published" class="form-control form-control-inverse" ng-model="post.published" ng-options="item.value as item.label for item in publishedOptions" required></select>
       </div>
+
+      <!-- Slug -->
       <div class="form-group">
         <label>Slug</label>
-        <input value="" name="slug" placeholder="Slug" class="form-control form-control-inverse"/>
+        <input value="" name="slug" placeholder="Slug" class="form-control form-control-inverse" ng-model="post.slug" required/>
       </div>
     </div>
-  </div>
-  <input value="" name="id" type="hidden"/>
-  <div class="flex-sm-4 flex-sm flex-sm-column">
+  </aside>
+
+  <!-- Editor -->
+  <div class="flex-xs-4 flex-xs flex-xs-column">
+
     <nav class="navbar navbar-light navbar-full bg-faded flex-sm">
-      <input name="title" placeholder="Title" maxlength="120" class="form-control-minimal flex-sm-1" ng-model="post.title"/>
 
+      <!-- Title -->
+      <input name="title" placeholder="Title" maxlength="120" class="form-control-minimal flex-sm-1" ng-model="post.title" required/>
 
-      <a href="#" data-toggle="modal" data-target="#markdown-helper" class="m-r-1"><i class="fa fa-2x fa-question-circle-o"></i></a>
-      <div class="btn-group pull-right"><a href="/dashboard" class="btn btn-secondary btn-sm"><i class="fa fa-angle-left"></i>Cancel</a>
-        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-floppy-o"></i>Save</button>
+      <div class="btn-group pull-right">
+
+        <a href="#/" class="btn btn-secondary btn-sm">
+          <i class="fa fa-angle-left"></i> Back
+        </a>
+
+        <button type="submit" class="btn btn-primary btn-sm">
+          <i class="fa fa-floppy-o"></i> Save
+        </button>
+
       </div>
     </nav>
-    <div class="flex-sm-1 flex-sm">
-      <div class="flex-sm-1 flex-sm">
-        <textarea placeholder="Start writing your blog post here." class="flex-sm-1 textarea-flush p-a-1 scrollbar-teal" ng-model="post.body"></textarea>
+
+    <!-- Edit area -->
+    <div class="flex-xs-1 flex-xs">
+
+      <!-- Input -->
+      <div class="flex-xs-1 flex-xs">
+        <textarea placeholder="Start writing your blog post here." class="flex-xs-1 textarea-flush p-a-1 scrollbar-teal" ng-model="post.body" required></textarea>
       </div>
-      <div id="preview" class="flex-sm-1 p-a-1 b-l-5 overflow-y scrollbar-teal" ng-bind-html="preview"></div>
+
+      <!-- Preview -->
+      <div id="preview" class="flex-xs-1 p-a-1 b-l-5 overflow-y scrollbar-teal bg-white hidden-md-down" ng-bind-html="preview"></div>
     </div>
   </div>
-
-  <ng-include src="'app/partials/markdown-modal.html'"></ng-include>
 </form>
+
+<div class="alert alert-static alert-danger" ng-show="errors">
+  <strong>Couldn't save post : </strong>
+  <ul>
+    <li ng-repeat="error in errors.data.meta.errors">
+      {{error.msg}}
+    </li>
+  </ul>
+</div>

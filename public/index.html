@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html ng-app="monoture">
   <head>
+
     <meta charset="utf-8">
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Monoture Dashboard</title>
     <link rel="stylesheet" href="/dashboard/css/main.css" media="screen">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa" media="screen">
   </head>
-  <body class="flex-sm bg-faded">
-    <ng-view class="flex-sm-1 flex-sm flex-sm-column"></ng-view>
+  <body class="flex-xs bg-faded">
+    <ng-view class="flex-xs-1 flex-xs flex-xs-column"></ng-view>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.min.js"></script>
@@ -20,7 +24,9 @@
     <script src="app/controllers/login.js"></script>
     <script src="app/controllers/postList.js"></script>
     <script src="app/controllers/postEdit.js"></script>
+    <script src="app/controllers/postCreate.js"></script>
 
     <script src="app/services/auth.js"></script>
+    <script src="app/services/post.js"></script>
   </body>
 </html>

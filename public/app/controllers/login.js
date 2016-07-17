@@ -5,10 +5,11 @@ monoture.controller('LoginController', function($scope, $rootScope, $http, $loca
       username : $scope.username,
       password : $scope.password
     }).then(function(data){
+      $scope.error = false;
       authProvider.setUser(data.data.user);
       $location.path('/');
     }).catch(function(err){
-      console.error(err);
+      $scope.error = true;
     });
   }
 });

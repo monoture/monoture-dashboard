@@ -1,5 +1,10 @@
 <main class="flex-sm flex-sm-1">
   <div class="login">
+
+    <div class="alert alert-danger" ng-show="error">
+      <strong>Whoops!</strong> Looks like we couldn't log you in. Please try again.
+    </div>
+
     <div class="card">
       <div class="card-block">
         <form class="clearfix" ng-submit="login()">

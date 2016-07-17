@@ -1,11 +1,19 @@
-angular.module('monoture').factory('authProvider', function($sessionStorage) {
+angular.module('monoture').factory('authProvider', function($sessionStorage, $location) {
   return {
     setUser : function(user){
       $sessionStorage.user = user;
     },
 
-    isLoggedIn : function(){
+    getUser : function(){
       return ($sessionStorage.user) ? $sessionStorage.user : false;
+    },
+
+    checkApiResponse : function(err) {
+      if (err.data.meta.errors.message == 'Unauthorized') {
+        $location.path('/login');
+      } else {
+        throw err;
+      }
     }
   };
 });

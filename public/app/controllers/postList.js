@@ -1,33 +1,31 @@
-monoture.controller('PostListController', function($scope, $rootScope, $http, $sce, $location, authProvider){
-  var user = authProvider.isLoggedIn();
-  $scope.user = user;
-  $scope.post = {};
+monoture.controller('PostListController', function($scope, $rootScope, $sce, $location, postService){
 
   $scope.loadPosts = function() {
-    $http({
-      url : '/api/v1/posts',
-      method : 'GET',
-      params : {access_token : user.token}
-    }).then(function(data){
-      console.log(data);
-      $scope.posts = data.data.data;
+    postService.getAll().then(function(response){
+      $scope.posts = response.data.data;
+
+      // If we haven't got any posts, go to the new post page
+      if ($scope.posts.length == 0) {
+        $location.path('/new');
+        return;
+      }
 
       // Load the first post if there's no preview
       if ($scope.preview == undefined) {
         $scope.fetchPost($scope.posts[0]._id);
       }
+    }).catch(function(err){
+      $scope.errors = err;
     });
   };
 
   $scope.fetchPost = function(id) {
-    $http({
-      url : '/api/v1/posts/' + id,
-      method : 'GET',
-      params : {access_token : user.token}
-    }).then(function(data){
-      console.log(data);
-      $scope.post = data.data.data;
-      $scope.preview = $sce.trustAsHtml(markdown.toHTML(data.data.data.body));
+    postService.getPost(id).then(function(response){
+      $scope.post = response.data.data;
+      $scope.selected = $scope.post._id;
+      $scope.preview = $sce.trustAsHtml(markdown.toHTML($scope.post.body));
+    }).catch(function(err){
+      $scope.errors = err;
     });
   }
 
@@ -36,17 +34,21 @@ monoture.controller('PostListController', function($scope, $rootScope, $http, $s
   }
 
   $scope.publishPost = function() {
-
+    postService.publishPost($scope.post).then(function(response){
+      $scope.loadPosts();
+    }).catch(function(err){
+      $scope.errors = err;
+    });
   }
 
   $scope.deletePost = function() {
-    $http({
-      url : '/api/v1/posts/' + $scope.post._id,
-      method : 'DELETE',
-      params : {access_token : user.token}
-    }).then(function(data){
-      console.log(data);
+    postService.deletePost($scope.post._id).then(function(data){
       $scope.loadPosts();
+
+      // Load the first available post
+      $scope.fetchPost($scope.posts[0]._id);
+    }).catch(function(err){
+      $scope.errors = err;
     });
   }
 

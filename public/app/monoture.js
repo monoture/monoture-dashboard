@@ -16,6 +16,10 @@ monoture.config(function($routeProvider) {
       templateUrl : 'app/views/edit.html',
       controller : 'PostEditController'
     }).
+    when('/new', {
+      templateUrl : 'app/views/edit.html',
+      controller : 'PostCreateController'      
+    }).
     otherwise({
         redirectTo: '/login'
     });
