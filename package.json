@@ -4,6 +4,14 @@
   "description": "Monoture Dashboard",
   "main": "index.js",
   "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monoture/monoture-dashboard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jamespegg/monoture-dashboard/issues"
+  },
+  "homepage": "https://github.com/jamespegg/monoture-dashboard#readme",
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.9.1",
