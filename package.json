@@ -9,9 +9,9 @@
     "url": "git+https://github.com/monoture/monoture-dashboard.git"
   },
   "bugs": {
-    "url": "https://github.com/jamespegg/monoture-dashboard/issues"
+    "url": "https://github.com/monoture/monoture-dashboard/issues"
   },
-  "homepage": "https://github.com/jamespegg/monoture-dashboard#readme",
+  "homepage": "https://github.com/monoture/monoture-dashboard#readme",
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.9.1",
