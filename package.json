@@ -14,6 +14,7 @@
   "homepage": "https://github.com/monoture/monoture-dashboard#readme",
   "dependencies": {},
   "devDependencies": {
+    "bootstrap": "^4.0.0-alpha.2",
     "gulp": "^3.9.1",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^1.6.0"

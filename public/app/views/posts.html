@@ -1,42 +1,43 @@
-<main class="flex-xs-1 flex-xs flex-xs-column flex-sm-row">
-  <!-- Sidebar -->
-  <aside class="list-group list-group-flush list-group-inverse flex-sm-2 flex-lg-1 overflow-y scrollbar-inverse">
+<main class="flex-xs-1 flex-xs flex-xs-column">
+  <!-- Navigation -->
+  <ng-include src="'/dashboard/app/partials/navbar.html'"></ng-include>
 
-    <div class="list-group-item brand">
-      Monoture Dashboard
-    </div>
+  <div class="flex-xs-1 flex-xs flex-xs-column flex-sm-row">
+    <!-- Sidebar -->
+    <aside class="list-group list-group-flush list-group-inverse flex-sm-2 flex-lg-1 overflow-y scrollbar-inverse">
 
-    <a href class="list-group-item {{selected == post._id ? 'active' : ''}}" ng-repeat="post in posts" ng-click="fetchPost(post._id)">
-      {{post.title}}
-    </a>
+      <a href class="list-group-item {{selected == post._id ? 'active' : ''}}" ng-repeat="post in posts" ng-click="fetchPost(post._id)">
+        {{post.title}}
+      </a>
 
-  </aside>
+    </aside>
 
-  <div class="flex-xs-4 flex-xs flex-xs-column">
-    <nav class="navbar navbar-light navbar-full bg-faded">
-      <div class="pull-xs-left">
-        <a href="#/new" class="btn btn-primary-outline btn-sm">
-          <i class="fa fa-plus"></i> New Post
-        </a>
-      </div>
-      <div class="pull-xs-right">
-        <div id="controls" class="btn-group btn-group-sm">
-          <a href ng-click="editPost()" data-control="edit" class="btn btn-secondary">
-            <i class="fa fa-pencil"></i> Edit
-          </a>
-          <a href ng-click="publishPost()" data-control="publish" class="btn btn-secondary">
-            <i class="fa fa-globe"></i> {{post.published ? 'Unpublish' : 'Publish'}}
-          </a>
-          <a href ng-href="/post/{{post.slug}}" target="_blank" data-control="view" class="btn btn-secondary">
-            <i class="fa fa-eye"></i> View
-          </a>
-          <a href ng-click="deletePost()" data-control="delete" class="btn btn-danger">
-            <i class="fa fa-trash"></i> Delete
+    <div class="flex-xs-4 flex-xs flex-xs-column">
+      <nav class="navbar navbar-light navbar-full bg-faded">
+        <div class="pull-xs-left">
+          <a href="#/new" class="btn btn-primary-outline btn-sm">
+            <i class="fa fa-plus"></i> New Post
           </a>
         </div>
-      </div>
-    </nav>
-    <div id="preview" class="flex-sm-1 p-a-1 overflow-y scrollbar-teal bg-white" ng-bind-html="preview"></div>
+        <div class="pull-xs-right">
+          <div id="controls" class="btn-group btn-group-sm">
+            <a href ng-click="editPost()" data-control="edit" class="btn btn-secondary">
+              <i class="fa fa-pencil"></i> Edit
+            </a>
+            <a href ng-click="publishPost()" data-control="publish" class="btn btn-secondary">
+              <i class="fa fa-globe"></i> {{post.published ? 'Unpublish' : 'Publish'}}
+            </a>
+            <a href ng-href="/post/{{post.slug}}" target="_blank" data-control="view" class="btn btn-secondary">
+              <i class="fa fa-eye"></i> View
+            </a>
+            <a href ng-click="deletePost()" data-control="delete" class="btn btn-danger">
+              <i class="fa fa-trash"></i> Delete
+            </a>
+          </div>
+        </div>
+      </nav>
+      <div id="preview" class="flex-sm-1 p-a-1 overflow-y scrollbar-teal bg-white" ng-bind-html="preview"></div>
+    </div>
   </div>
 </main>
 

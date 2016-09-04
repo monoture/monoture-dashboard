@@ -1,60 +1,60 @@
-<form method="post" ng-submit="save()" class="flex-xs-1 flex-xs flex-xs-column flex-sm-row">
+<form method="post" ng-submit="save()" class="flex-xs-1 flex-xs flex-xs-column">
+  <!-- Navigation -->
+  <ng-include src="'/dashboard/app/partials/navbar.html'"></ng-include>
 
-  <!-- Sidebar -->
-  <aside class="list-group list-group-flush list-group-inverse flex-sm-2 flex-lg-1 overflow-y scrollbar-inverse">
+  <div class="flex-xs-1 flex-xs flex-xs-column flex-sm-row">
+    <!-- Sidebar -->
+    <aside class="list-group list-group-flush list-group-inverse flex-sm-2 flex-lg-1 overflow-y scrollbar-inverse">
 
-    <div class="list-group-item brand">
-      Monoture Dashboard
-    </div>
+      <div class="list-group-item">
+        <h4>Properties</h4>
 
-    <div class="list-group-item">
-      <h4>Properties</h4>
+        <!-- Published -->
+        <div class="form-group">
+          <label>Published</label>
+          <select name="published" class="form-control form-control-inverse" ng-model="post.published" ng-options="item.value as item.label for item in publishedOptions" required></select>
+        </div>
 
-      <!-- Published -->
-      <div class="form-group">
-        <label>Published</label>
-        <select name="published" class="form-control form-control-inverse" ng-model="post.published" ng-options="item.value as item.label for item in publishedOptions" required></select>
+        <!-- Slug -->
+        <div class="form-group">
+          <label>Slug</label>
+          <input value="" name="slug" placeholder="Slug" class="form-control form-control-inverse" ng-model="post.slug" required/>
+        </div>
       </div>
+    </aside>
 
-      <!-- Slug -->
-      <div class="form-group">
-        <label>Slug</label>
-        <input value="" name="slug" placeholder="Slug" class="form-control form-control-inverse" ng-model="post.slug" required/>
-      </div>
-    </div>
-  </aside>
+    <!-- Editor -->
+    <div class="flex-xs-4 flex-xs flex-xs-column">
 
-  <!-- Editor -->
-  <div class="flex-xs-4 flex-xs flex-xs-column">
+      <nav class="navbar navbar-light navbar-full bg-faded flex-sm">
 
-    <nav class="navbar navbar-light navbar-full bg-faded flex-sm">
+        <!-- Title -->
+        <input name="title" placeholder="Title" maxlength="120" class="form-control-minimal flex-sm-1" ng-model="post.title" required/>
 
-      <!-- Title -->
-      <input name="title" placeholder="Title" maxlength="120" class="form-control-minimal flex-sm-1" ng-model="post.title" required/>
+        <div class="btn-group pull-right">
 
-      <div class="btn-group pull-right">
+          <a href="#/" class="btn btn-secondary btn-sm">
+            <i class="fa fa-angle-left"></i> Back
+          </a>
 
-        <a href="#/" class="btn btn-secondary btn-sm">
-          <i class="fa fa-angle-left"></i> Back
-        </a>
+          <button type="submit" class="btn btn-primary btn-sm">
+            <i class="fa fa-floppy-o"></i> Save
+          </button>
 
-        <button type="submit" class="btn btn-primary btn-sm">
-          <i class="fa fa-floppy-o"></i> Save
-        </button>
+        </div>
+      </nav>
 
-      </div>
-    </nav>
-
-    <!-- Edit area -->
-    <div class="flex-xs-1 flex-xs">
-
-      <!-- Input -->
+      <!-- Edit area -->
       <div class="flex-xs-1 flex-xs">
-        <textarea placeholder="Start writing your blog post here." class="flex-xs-1 textarea-flush p-a-1 scrollbar-teal" ng-model="post.body" required></textarea>
-      </div>
 
-      <!-- Preview -->
-      <div id="preview" class="flex-xs-1 p-a-1 b-l-5 overflow-y scrollbar-teal bg-white hidden-md-down" ng-bind-html="preview"></div>
+        <!-- Input -->
+        <div class="flex-xs-1 flex-xs">
+          <textarea placeholder="Start writing your blog post here." class="flex-xs-1 textarea-flush p-a-1 scrollbar-teal" ng-model="post.body" required></textarea>
+        </div>
+
+        <!-- Preview -->
+        <div id="preview" class="flex-xs-1 p-a-1 b-l-5 overflow-y scrollbar-teal bg-white hidden-md-down" ng-bind-html="preview"></div>
+      </div>
     </div>
   </div>
 </form>
