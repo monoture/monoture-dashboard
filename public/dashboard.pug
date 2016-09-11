@@ -1,0 +1,31 @@
+doctype html
+html(ng-app='monoture')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(http-equiv='x-ua-compatible', content='ie=edge')
+    title Monoture Dashboard
+    link(rel='stylesheet', href='/dashboard/css/main.css', media='screen')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Comfortaa', media='screen')
+  body.flex-xs.bg-faded
+
+    ng-view.flex-xs-1.flex-xs.flex-xs-column
+
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/markdown.js/0.5.0/markdown.min.js')
+
+    script(src='app/monoture.js')
+    script(src='app/authentication.js')
+    script(src='app/controllers/login.js')
+    script(src='app/controllers/postList.js')
+    script(src='app/controllers/postEdit.js')
+    script(src='app/controllers/postCreate.js')
+    script(src='app/services/auth.js')
+    script(src='app/services/post.js')
+    script(src='app/services/plugin.js')
+
+    each plugin in plugins
+      script(src='app/' + plugin + '.js')
