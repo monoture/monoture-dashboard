@@ -1,4 +1,4 @@
-monoture.controller('PostEditController', function($scope, $rootScope, $sce, $location, $routeParams, postService){
+monoture.controller('PostEditController', function($scope, $rootScope, $location, $routeParams, postService){
 
   $scope.publishedOptions = [
     {label : "Yes", value : true},
@@ -20,12 +20,6 @@ monoture.controller('PostEditController', function($scope, $rootScope, $sce, $lo
       $scope.errors = err;
     });
   }
-
-  $scope.$watch('post.body', function(){
-    if ($scope.post != undefined) {
-      $scope.preview = $sce.trustAsHtml(markdown.toHTML($scope.post.body));
-    }
-  });
 
   $scope.fetchPost($routeParams.post);
 });

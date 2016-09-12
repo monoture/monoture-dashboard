@@ -1,4 +1,4 @@
-monoture.controller('PostListController', function($scope, $rootScope, $sce, $location, postService){
+monoture.controller('PostListController', function($scope, $rootScope, $location, postService){
 
   $scope.loadPosts = function() {
     postService.getAll().then(function(response){
@@ -11,7 +11,7 @@ monoture.controller('PostListController', function($scope, $rootScope, $sce, $lo
       }
 
       // Load the first post if there's no preview
-      if ($scope.preview == undefined) {
+      if ($scope.post == undefined) {
         $scope.fetchPost($scope.posts[0]._id);
       }
     }).catch(function(err){
@@ -23,7 +23,6 @@ monoture.controller('PostListController', function($scope, $rootScope, $sce, $lo
     postService.getPost(id).then(function(response){
       $scope.post = response.data.data;
       $scope.selected = $scope.post._id;
-      $scope.preview = $sce.trustAsHtml(markdown.toHTML($scope.post.body));
     }).catch(function(err){
       $scope.errors = err;
     });

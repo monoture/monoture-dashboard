@@ -53,7 +53,7 @@
         </div>
 
         <!-- Preview -->
-        <div id="preview" class="flex-xs-1 p-a-1 b-l-5 overflow-y scrollbar-teal bg-white hidden-md-down" ng-bind-html="preview"></div>
+        <div id="preview" class="flex-xs-1 p-a-1 b-l-5 overflow-y scrollbar-teal bg-white hidden-md-down" ng-bind-html="post.body | markdown"></div>
       </div>
     </div>
   </div>
