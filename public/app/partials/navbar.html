@@ -2,5 +2,9 @@
   <span class="navbar-brand">Monoture Dashboard</span>
   <ul class="nav navbar-nav pull-xs-right">
     <li class="nav-item"><a href="#/" class="nav-link">Posts</a></li>
+
+    <li class="nav-item" ng-repeat="(key, value) in nav">
+      <a href="#{{value}}" class="nav-link">{{key}}</a>
+    </li>
   </ul>
 </nav>

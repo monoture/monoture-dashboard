@@ -23,3 +23,7 @@ monoture.config(function($routeProvider) {
     redirectTo: '/login'
   });
 });
+
+monoture.run(function($rootScope, nav){
+  $rootScope.nav = nav;
+})
