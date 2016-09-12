@@ -3,7 +3,8 @@
 @include bg-variant('.bg-blue', $brand-blue);
 @include bg-variant('.bg-navy', $brand-navy);
 @include bg-variant('.bg-white', #FFF);
+@include bg-variant('.bg-gray', $gray-lighter);
 
-.bg-white {
+.bg-white, .bg-gray {
   color : $gray !important;
 }
