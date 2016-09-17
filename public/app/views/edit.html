@@ -15,6 +15,12 @@
           <select name="published" class="form-control form-control-inverse" ng-model="post.published" ng-options="item.value as item.label for item in publishedOptions" required></select>
         </div>
 
+        <!-- Description -->
+        <div class="form-group">
+          <label>Description</label>
+          <textarea name="description" rows="2" maxlength="160" class="form-control form-control-inverse" ng-model="post.description" required></textarea>
+        </div>
+
         <!-- Slug -->
         <div class="form-group">
           <label>Slug</label>
