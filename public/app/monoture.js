@@ -8,8 +8,7 @@ monoture.config(function($routeProvider) {
     controller : 'PostListController'
   }).
   when('/login', {
-    templateUrl : 'app/views/login.html',
-    controller : 'LoginController'
+    templateUrl : 'app/views/login.html'
   }).
   when('/edit/:post', {
     templateUrl : 'app/views/edit.html',

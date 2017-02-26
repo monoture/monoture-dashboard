@@ -1,22 +1,22 @@
 <main class="flex-sm flex-sm-1">
-  <div class="login">
+  <div class="login" ng-controller="AuthController as vm">
 
-    <div class="alert alert-danger" ng-show="error">
+    <div class="alert alert-danger" ng-show="vm.error">
       <strong>Whoops!</strong> Looks like we couldn't log you in. Please try again.
     </div>
 
     <div class="card">
       <div class="card-block">
-        <form class="clearfix" ng-submit="login()">
+        <form class="clearfix" ng-submit="vm.login()">
 
           <div class="form-group">
             <label for="username">Username</label>
-            <input class="form-control" type="text" ng-model="username" name="username">
+            <input class="form-control" type="text" ng-model="vm.username" name="username">
           </div>
 
           <div class="form-group">
             <label for="password">Password</label>
-            <input class="form-control" type="password" ng-model="password" name="password">
+            <input class="form-control" type="password" ng-model="vm.password" name="password">
           </div>
 
           <button class="btn btn-success-outline pull-xs-right" type="submit">Login</button>
