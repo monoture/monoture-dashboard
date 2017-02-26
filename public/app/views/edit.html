@@ -26,6 +26,17 @@
           <label>Slug</label>
           <input value="" name="slug" placeholder="Slug" class="form-control form-control-inverse" ng-model="post.slug" required/>
         </div>
+
+        <!-- Featured -->
+        <div class="form-group">
+          <label>Featured</label>
+          <select name="featured" class="form-control form-control-inverse" ng-model="post.featured" ng-options="item.value as item.label for item in publishedOptions" required></select>
+        </div>
+
+        <hr class="m-t-3" style="border-color : #666">
+        <small class="text-muted">Created {{post.created_at | timeago}}</small>
+        <br>
+        <small class="text-muted">Updated {{post.updated_at | timeago}}</small>
       </div>
     </aside>
 
